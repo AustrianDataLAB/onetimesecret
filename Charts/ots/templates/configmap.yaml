@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "ots.fullname" . }}-configmap
+  labels:
+    {{- include "ots.labels" . | nindent 4 }}
+data: 
+  config: |
+    :site:
+      :host: {{ .Values.domain }}
+      :domain: {{ .Values.domain }}
+      :ssl: true
+
+      :secret: CHANGEME
+    :redis:
+      :uri: 'redis://127.0.0.1:6379/0?timeout=10&thread_safe=false&logging=false'
+      :config: /etc/redis/redis.conf
+    :colonels:
+
+      - CHANGEME@EXAMPLE.com
+    :emailer:
+      :mode: :sendgrid
+      :account: CHANGEME
+      :password: CHANGEME
+      :from: CHANGEME@example.com
+      :fromname: CHANGEME
+      :bcc:
+
+    :incoming:
+
+      :enabled: false
+      :email: example@onetimesecret.com
+      :passphrase: CHANGEME
+      :regex: \A[a-zA-Z0-9]{6}\z
+    :locales:
+      - en
+      - es
+      - de
+      - nl
+      - ru
+      - cs
+      - fr
+      - bg
+      - tr
+      - ca_ES
+      - pt_BR
+      - pl
+    :unsupported_locales:
+      - pt
+      - jp
+      - cn
+      - it
+    :stathat:
+      :enabled: false
+      :apikey: CHANGEME
+      :default_chart: CHANGEME
+    :text:
+      :nonpaid_recipient_text: 'You need to create an account!'
+      :paid_recipient_text: 'Send the secret link via email'
+    :limits:
+      :create_secret: 250
+      :create_account: 10
+      :update_account: 10
+      :email_recipient: 50
+      :send_feedback: 10
+      :authenticate_session: 5
+      :homepage: 500
+      :dashboard: 1000
+      :failed_passphrase: 5
+      :show_metadata: 1000
+      :show_secret: 1000
+      :burn_secret: 1000 
