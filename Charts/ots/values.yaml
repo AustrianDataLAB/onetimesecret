@@ -8,10 +8,10 @@ replicaCount: 1
 # domain: <Your Domain Name>
 
 image:
-  repository: ghcr.io/mb-wali/ots
+  repository: ghcr.io/austriandatalab/onetimesecret
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "sha-dc3e273"
 
 imagePullSecrets: []
 nameOverride: "ots"
