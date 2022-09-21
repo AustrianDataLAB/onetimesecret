@@ -33,8 +33,9 @@ spec:
           image: bitnami/redis:latest
           ports:
           - containerPort: 6379
-          environment:
-            - ALLOW_EMPTY_PASSWORD=yes
+          env:
+            - name: ALLOW_EMPTY_PASSWORD
+              value: "yes"
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
