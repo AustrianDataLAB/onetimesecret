@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   ots:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2022-09-21T10:38:53.541383223Z"
+    description: A HelmChart to provide a onetimesecret deployment.
+    digest: bd062082dfdf3b2c36c6481c0409252ed64b085fbf1a25a67add17bdb221a488
+    name: ots
+    type: application
+    urls:
+    - https://github.com/AustrianDataLAB/onetimesecret/releases/download/ots-0.0.4/ots-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.3
     created: "2022-09-20T13:07:48.804521339Z"
     description: A HelmChart to provide a onetimesecret deployment.
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/AustrianDataLAB/onetimesecret/releases/download/ots-0.0.3/ots-0.0.3.tgz
     version: 0.0.3
-generated: "2022-09-20T13:07:48.804526839Z"
+generated: "2022-09-21T10:38:53.541391423Z"
