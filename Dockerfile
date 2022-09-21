@@ -3,12 +3,14 @@
 
 FROM ruby:2.6
 
+RUN groupadd -g 1000 onetime && \
+    useradd -m -d /var/lib/onetime -s /bin/nologin -u 1000 -g 1000 onetime
+  
 # Install dependencies
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && \
   apt-get install -y \
     build-essential \
-    redis-server \
   && rm -rf /var/lib/apt/lists/*
 
 # Download and install OTS version 0.10.x
@@ -25,9 +27,9 @@ ADD entrypoint.sh /usr/bin/
 
 # Add default config
 ADD config.example /etc/onetime/config
-
-VOLUME /etc/onetime /var/run/redis
-
-EXPOSE 7143/tcp
 RUN chmod +x /usr/bin/entrypoint.sh
+
+USER onetime
+
+EXPOSE 7143
 ENTRYPOINT /usr/bin/entrypoint.sh

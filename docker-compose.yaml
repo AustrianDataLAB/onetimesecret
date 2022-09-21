@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  app:
+    build: .
+    depends_on:
+      - redis
+    ports:
+      - 7143:7143
+
+  redis:
+    image: redis:7.0-alpine
+    ports:
+      - "6379:6379"

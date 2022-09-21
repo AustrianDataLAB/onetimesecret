@@ -28,6 +28,13 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
+        # sidcar
+        - name: redis
+          image: bitnami/redis:latest
+          ports:
+          - containerPort: 6379
+          environment:
+            - ALLOW_EMPTY_PASSWORD=yes
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
