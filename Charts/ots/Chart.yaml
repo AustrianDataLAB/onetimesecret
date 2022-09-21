@@ -2,6 +2,6 @@ apiVersion: v2
 name: ots
 description: A HelmChart to provide a onetimesecret deployment.
 type: application
-version: 0.0.4
-appVersion: 0.0.4
+version: 0.0.5
+appVersion: 0.0.5
 dependencies: []
