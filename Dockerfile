@@ -11,6 +11,9 @@ RUN apt-get update \
     && apt-get install -y build-essential \
      ntp libyaml-dev libevent-dev zlib1g
 
+# Add replacing files
+COPY overrides/ /var/lib/onetime
+
 # Download and install OTS version 0.10.x
 RUN set -ex && \
   mkdir -p /etc/onetime /var/log/onetime /var/run/onetime /var/lib/onetime && \
@@ -19,6 +22,9 @@ RUN set -ex && \
   tar xzf /tmp/ots.tar.gz -C /var/lib/onetime --strip-components=1 && \
   rm /tmp/ots.tar.gz && \
   cd /var/lib/onetime && \
+  cp -f header.mustache templates/web/header.mustache && \
+  cp -f homepage.mustache templates/web/homepage.mustache && \
+  cp -f footer.mustache templates/web/footer.mustache && \
   bundle install --frozen --deployment --without=dev && \
   cp -R etc/* /etc/onetime/ && \
   chown -R onetime /etc/onetime /var/lib/onetime && \

@@ -1,0 +1,29 @@
+
+  <hr/>
+
+  <div id="footer">
+
+
+  </div>
+
+</div> <!-- /container -->
+
+<script src="/js/vendor/bootstrap.min.js"></script>
+
+<script src="/js/plugins.js?{{ot_version_id}}"></script>
+<script src="/js/main.js?{{ot_version_id}}"></script>
+{{#js}}
+<script src="{{to_s}}" type="text/javascript"></script>
+{{/js}}
+<script type="text/javascript">
+  //$('.jumbotron h1').removeClass('temp-kerning');
+  //Cufon.refresh();
+</script>
+
+{{#with_analytics}}
+<!-- No analytics enabled by default (or on onetimesecret.com). -->
+{{/with_analytics}}
+
+<!-- {{via_hn}}:{{via_test}}:{{via_reddit}} -->
+</body>
+</html>
